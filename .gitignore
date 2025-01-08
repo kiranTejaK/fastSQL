@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# C extensions
+*.so
+
+# VS Code settings
+.vscode/
+
+# Virtual environments
+venv/
+env/
+
+# Environment variables
+*.env
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg-info/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Pyright and Pylance type checking files
+typings/
+
+# IDE-specific settings
+.idea/
+*.iml
+
+# Other system files
+.DS_Store
+Thumbs.db
