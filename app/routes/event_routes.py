@@ -14,11 +14,23 @@ BAD_REQUEST_MESSAGE = "Request Forged. Missing required headers."
 
 @router.get("/db-test/")
 def db_conn_test():
-    connection = get_db_connection()
+    connection = get_db_connection() 
     if connection:
-        print("Db connected Successfully.")
-    else: 
-        print("Db connection Failure.")
+        return JSONResponse(
+            status_code=200,
+            content={
+                "http_code": 200,
+                "status_message": "DB connected successfully."
+            }
+        )
+    else:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "http_code": 500,
+                "status_message": "DB connection failure."
+            }
+        )
 
 @router.post("/get/events/")
 async def get_all_events(

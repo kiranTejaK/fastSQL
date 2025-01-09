@@ -1,7 +1,7 @@
 # app/exceptions/response_exceptions.py
 from fastapi import HTTPException, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse # type: ignore
 
 # Custom exception class for internal server errors
 class InternalServerError(HTTPException):
