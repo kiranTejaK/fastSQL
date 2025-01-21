@@ -1,5 +1,5 @@
 # app/models/event_models.py
-import datetime
+from datetime import datetime
 from pydantic import BaseModel, Field, field_validator
 from typing import Optional
  
@@ -88,4 +88,3 @@ class EventUpdateRequest(BaseModel):
     # Optional fields
     event_name_en: Optional[str] = Field(None, min_length=2, error_msg="event_name_en must be at least 2 characters long if provided")
     event_desc_en: Optional[str] = Field(None, min_length=2, error_msg="event_desc_en must be at least 2 characters long if provided")
-    
