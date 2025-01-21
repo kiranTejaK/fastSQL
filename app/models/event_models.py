@@ -18,9 +18,7 @@ class GetEventDetailsRequest(BaseModel):
 #     # Optional fields
 #     event_name_en: Optional[str] = Field(None, min_length=2, error_msg="event_name_en must be at least 2 characters long if provided")
 #     event_desc_en: Optional[str] = Field(None, min_length=2, error_msg="event_desc_en must be at least 2 characters long if provided")
-from pydantic import BaseModel, Field, validator
-from typing import Optional
- 
+
 class EventCreateRequest(BaseModel):
     # Mandatory fields
     event_name_ar: str
@@ -36,9 +34,9 @@ class EventCreateRequest(BaseModel):
  
     # Custom validators with specific error messages
     @field_validator('event_name_ar', 'event_desc_ar', 'event_name_en', 'event_desc_en')
-    def validate_min_length(cls, v, field):
+    def validate_min_length(cls, v, info):
         if v is not None and len(v) < 2:
-            raise ValueError(f"{field.name} must be at least 2 characters long")
+            raise ValueError(f"{info.field_name} must be at least 2 characters long")
         return v
  
     @field_validator('status')
@@ -92,9 +90,9 @@ class EventUpdateRequest(BaseModel):
 
     # Custom validators with specific error messages
     @field_validator('event_name_ar', 'event_desc_ar', 'event_name_en', 'event_desc_en')
-    def validate_min_length(cls, v, field):
+    def validate_min_length(cls, v, info):
         if v is not None and len(v) < 2:
-            raise ValueError(f"{field.name} must be at least 2 characters long")
+            raise ValueError(f"{info.field_name} must be at least 2 characters long")
         return v
  
     @field_validator('status')
@@ -104,9 +102,9 @@ class EventUpdateRequest(BaseModel):
         return v
  
     @field_validator('event_image','event_id')
-    def validate_event_image(cls, v, field):
+    def validate_event_image(cls, v, info):
         if v < 0:
-            raise ValueError(f"{field.name} must be a positive integer")
+            raise ValueError(f"{info.field_name} must be a positive integer")
         return v
  
     @field_validator('event_sort_rank')
