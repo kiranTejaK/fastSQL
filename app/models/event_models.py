@@ -23,12 +23,12 @@ from typing import Optional
  
 class EventCreateRequest(BaseModel):
     # Mandatory fields
-    event_name_ar: str = Field(..., min_length=2)
-    event_desc_ar: str = Field(..., min_length=2)
-    status: int = Field(..., ge=0, le=1)
+    event_name_ar: str
+    event_desc_ar: str
+    status: int
     event_datetime: str
-    event_image: int = Field(..., gt=0)
-    event_sort_rank: int = Field(..., ge=0)
+    event_image: int
+    event_sort_rank: int
    
     # Optional fields
     event_name_en: Optional[str] = Field(None, min_length=2)
@@ -63,6 +63,7 @@ class EventCreateRequest(BaseModel):
     def validate_event_datetime(cls, v):
         # List of valid formats
         formats = [
+            "%Y-%m-%d %H:%M:%S.%f", #2024-11-15 15:30:00.000000
             "%Y-%m-%d %H:%M:%S",  # 2024-01-21 15:30:00
             "%Y-%m-%d"            # 2024-01-21
         ]
