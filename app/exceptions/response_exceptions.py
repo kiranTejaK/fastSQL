@@ -35,7 +35,15 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     Custom handler for Pydantic validation errors.
     """
     error_details = [
-        {"field": err['loc'][-1], "message": err['msg']} for err in exc.errors()
+    {
+        "field": err['loc'][-1],
+        "message": (
+            err['msg'].replace("Value error, ", "")
+            if isinstance(err['msg'], str)
+            else err['msg']
+        )
+    }
+    for err in exc.errors()
     ]
     return JSONResponse(
         status_code=422,
