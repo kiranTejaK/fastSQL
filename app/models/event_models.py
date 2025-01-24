@@ -29,8 +29,8 @@ class EventCreateRequest(BaseModel):
     event_sort_rank: int
    
     # Optional fields
-    event_name_en: Optional[str]
-    event_desc_en: Optional[str]
+    event_name_en: Optional[str] = None
+    event_desc_en: Optional[str] = None
  
     # Custom validators with specific error messages
     @field_validator('event_name_ar', 'event_desc_ar', 'event_name_en', 'event_desc_en')
@@ -85,8 +85,8 @@ class EventUpdateRequest(BaseModel):
     event_sort_rank: int
  
     # Optional fields
-    event_name_en: Optional[str]
-    event_desc_en: Optional[str]
+    event_name_en: Optional[str] = None
+    event_desc_en: Optional[str] = None
 
     # Custom validators with specific error messages
     @field_validator('event_name_ar', 'event_desc_ar', 'event_name_en', 'event_desc_en')
