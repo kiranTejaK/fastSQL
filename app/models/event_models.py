@@ -36,25 +36,25 @@ class EventCreateRequest(BaseModel):
     @field_validator('event_name_ar', 'event_desc_ar', 'event_name_en', 'event_desc_en')
     def validate_min_length(cls, v, info):
         if v is not None and len(v) < 2:
-            raise ValueError(f"{info.field_name} must be at least 2 characters long")
+            raise ValueError(f"{info.field_name} is too short.")
         return v
  
     @field_validator('status')
     def validate_status(cls, v):
         if v not in (0, 1):
-            raise ValueError("status must be either 0 or 1")
+            raise ValueError("Invalid Status.")
         return v
  
     @field_validator('event_image')
     def validate_event_image(cls, v):
         if v < 0:
-            raise ValueError("event_image must be a positive integer")
+            raise ValueError("Invalid Event Image.")
         return v
  
     @field_validator('event_sort_rank')
     def validate_event_sort_rank(cls, v):
         if v <= 0:
-            raise ValueError("event_sort_rank must be a non-negative integer")
+            raise ValueError("event_sort_rank must be a non-negative integer.")
         return v
    
     @field_validator('event_datetime')
@@ -92,19 +92,19 @@ class EventUpdateRequest(BaseModel):
     @field_validator('event_name_ar', 'event_desc_ar', 'event_name_en', 'event_desc_en')
     def validate_min_length(cls, v, info):
         if v is not None and len(v) < 2:
-            raise ValueError(f"{info.field_name} must be at least 2 characters long")
+            raise ValueError(f"{info.field_name} is too short.")
         return v
  
     @field_validator('status')
     def validate_status(cls, v):
         if v not in (0, 1):
-            raise ValueError("status must be either 0 or 1")
+            raise ValueError("Invalid status.")
         return v
  
     @field_validator('event_image','event_id')
     def validate_event_image(cls, v, info):
         if v < 0:
-            raise ValueError(f"{info.field_name} must be a positive integer")
+            raise ValueError(f"{info.field_name} must be a positive integer.")
         return v
  
     @field_validator('event_sort_rank')

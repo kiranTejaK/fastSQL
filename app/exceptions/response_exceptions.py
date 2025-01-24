@@ -49,7 +49,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         status_code=422,
         content={
             "status": "F",
-            "status_code": "XC400",
+            "status_code": "XC422",
             "status_message": "Validation error occurred",
             "http_code": 422,
             "error_details": error_details,
